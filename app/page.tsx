@@ -43,6 +43,14 @@ import { hillstations } from "@/components/Content/destination-card-hills.js";
 import { religious } from "@/components/Content/destination-card-religious.js";
 import { packages } from "@/components/Content/packages.js";
 import { PackagesCard } from "@/components/Packages-card";
+import { TestimonialCard } from "@/components/testimonials-card";
+import { testimonials } from "@/components/Content/testimonials";
+import Logo from "../public/logo.svg";
+
+
+
+
+
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -177,11 +185,11 @@ export default function Home() {
               }}
             >
               <Image
-                src="https://www.svgrepo.com/show/405810/hindu-temple.svg"
+                src="/logoimage.png"
                 alt="Bharat Yatra logo"
                 width={40}
                 height={40}
-                className="rounded-full border-2 border-amber-500"
+                className="rounded-full "
               />
             </motion.div>
             <motion.span
@@ -199,7 +207,13 @@ export default function Home() {
                 repeatType: "loop",
               }}
             >
-              Kashi Ki Yatra
+              <Image 
+                src="/logo.svg"
+                alt="Kashi ki yatra logo"
+                width={140}
+                height={50}
+                className="rounded-full text-amber-700"
+              />
             </motion.span>
           </motion.div>
           <nav className="hidden md:flex items-center gap-8">
@@ -328,7 +342,7 @@ export default function Home() {
           />
           <div className="absolute inset-0">
             <Image
-              src="/placeholder1.jpg?height=600&width=1600"
+              src="/placeholder1-min.jpg"
               alt="Ancient Indian Temple"
               width={1600}
               height={600}
@@ -356,11 +370,25 @@ export default function Home() {
                 Discover the Soul of India
               </motion.div>
               <TextReveal
-                text="Explore  your  Dream  Yatra  with  Us"
+                text="Explore  your  Dream  Yatra  with"
                 className="text-3xl font-bold sm:text-4xl md:text-5xl/tight text-white mb-6"
                 delay={0.5}
               />
-              <motion.span
+              <motion.div
+                className="flex justify-center mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Image
+                  src={"/logoyellow.svg"}
+                  alt="kashi Ki yatra "
+                  width={600}
+                  height={200}
+                  className="rounded-full mb-6"
+                />
+              </motion.div>
+              {/* <motion.span
                 className="text-5xl font-bold  sm:text-4xl md:text-[5rem]/tight text-amber-300 block mb-6"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -371,7 +399,7 @@ export default function Home() {
                 }}
               >
                 काशी की यात्रा
-              </motion.span>
+              </motion.span> */}
               <motion.p
                 className="mx-auto max-w-[700px] text-white/90 md:text-xl mb-8"
                 initial={{ opacity: 0, y: 20 }}
@@ -513,7 +541,7 @@ export default function Home() {
               <AnimatedSection>
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
                   <motion.div
-                    className="inline-block rounded-lg bg-amber-100 px-3 py-1 text-sm text-amber-800"
+                    className="inline-block rounded-lg  bg-amber-500/10 px-3 py-1 text-sm text-amber-800"
                     whileHover={{
                       scale: 1.05,
                       backgroundColor: "#fcd34d",
@@ -670,6 +698,10 @@ export default function Home() {
           </motion.div>
         </section>
 
+
+
+
+
         {/* Popular Packages */}
         <section id="packages" className="py-12 md:py-24  relative">
           <div className="container px-4 md:px-6">
@@ -728,22 +760,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="py-12 md:py-24 bg-amber-50/50 relative">
-          <FloatingElement
-            className="absolute bottom-20 left-10 opacity-20 hidden lg:block"
-            duration={4}
-            delay={0.5}
-          >
-            <Image
-              src="/placeholder.svg?height=100&width=100"
-              alt="Decorative element"
-              width={100}
-              height={100}
-              className="rotate-180"
-            />
-          </FloatingElement>
 
+
+
+
+        {/* Testimonials */}
+        <section className="py-12 md:py-14 bg-amber-500/10 relative">
           <div className="container px-4 md:px-6">
             <AnimatedSection>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -771,191 +793,16 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
               {/* Testimonial 1 */}
-              <AnimatedCard delay={0.1}>
-                <CardContent className="p-6">
-                  <div className="flex flex-col gap-4">
-                    <motion.div
-                      className="flex gap-4 items-center"
-                      initial={{ x: -20 }}
-                      whileInView={{ x: 0 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <Image
-                          src="/placeholder.svg?height=60&width=60"
-                          alt="Rajesh Sharma"
-                          width={60}
-                          height={60}
-                          className="rounded-full border-2 border-amber-300"
-                        />
-                      </motion.div>
-                      <div>
-                        <h4 className="font-bold">Rajesh Sharma</h4>
-                        <p className="text-sm text-gray-500">Delhi</p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="flex"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      {[...Array(5)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: 0.2 + i * 0.1 }}
-                        >
-                          <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                    <motion.p
-                      className="text-gray-600 italic"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                    >
-                      "The Char Dham Yatra was a life-changing experience. The
-                      guides were knowledgeable about the spiritual significance
-                      of each site, and the arrangements were perfect. I felt a
-                      deep connection to our ancient traditions."
-                    </motion.p>
-                  </div>
-                </CardContent>
-              </AnimatedCard>
-
-              {/* Testimonial 2 */}
-              <AnimatedCard delay={0.2}>
-                <CardContent className="p-6">
-                  <div className="flex flex-col gap-4">
-                    <motion.div
-                      className="flex gap-4 items-center"
-                      initial={{ x: -20 }}
-                      whileInView={{ x: 0 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: -5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <Image
-                          src="/placeholder.svg?height=60&width=60"
-                          alt="Priya Patel"
-                          width={60}
-                          height={60}
-                          className="rounded-full border-2 border-amber-300"
-                        />
-                      </motion.div>
-                      <div>
-                        <h4 className="font-bold">Priya Patel</h4>
-                        <p className="text-sm text-gray-500">Mumbai</p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="flex"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      {[...Array(5)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: 0.2 + i * 0.1 }}
-                        >
-                          <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                    <motion.p
-                      className="text-gray-600 italic"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                    >
-                      "Our family trip to Shimla and Manali was perfectly
-                      organized. The accommodations were comfortable, and the
-                      itinerary balanced spiritual sites with natural beauty.
-                      The children loved the adventure activities!"
-                    </motion.p>
-                  </div>
-                </CardContent>
-              </AnimatedCard>
-
-              {/* Testimonial 3 */}
-              <AnimatedCard delay={0.3}>
-                <CardContent className="p-6">
-                  <div className="flex flex-col gap-4">
-                    <motion.div
-                      className="flex gap-4 items-center"
-                      initial={{ x: -20 }}
-                      whileInView={{ x: 0 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <Image
-                          src="/placeholder.svg?height=60&width=60"
-                          alt="Suresh Iyer"
-                          width={60}
-                          height={60}
-                          className="rounded-full border-2 border-amber-300"
-                        />
-                      </motion.div>
-                      <div>
-                        <h4 className="font-bold">Suresh Iyer</h4>
-                        <p className="text-sm text-gray-500">Bangalore</p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      className="flex"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      {[...Array(5)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: 0.2 + i * 0.1 }}
-                        >
-                          <Star
-                            key={i}
-                            className={`h-4 w-4 ${
-                              i < 4
-                                ? "fill-amber-500 text-amber-500"
-                                : "text-gray-300"
-                            }`}
-                          />
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                    <motion.p
-                      className="text-gray-600 italic"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                    >
-                      "The Golden Triangle with Varanasi tour exceeded my
-                      expectations. Witnessing the Ganga Aarti at Varanasi was a
-                      deeply moving experience. The guides were knowledgeable
-                      and accommodating."
-                    </motion.p>
-                  </div>
-                </CardContent>
-              </AnimatedCard>
+              {testimonials.map((t, index) => (
+                <TestimonialCard key={index} {...t} />
+              ))}
             </div>
           </div>
         </section>
+
+
+
+
 
         {/* Call to Action */}
         <section className="py-12 md:py-24 bg-amber-800 text-white relative overflow-hidden">
@@ -1006,8 +853,8 @@ export default function Home() {
                     className="relative"
                   >
                     <Button
-                      variant="outline"
-                      className="border-white text-white hover:bg-amber-700 relative"
+                      
+                      className=" text-black bg-amber-500  hover:bg-amber-600 relative"
                     >
                       <motion.span
                         className="absolute inset-0 bg-amber-700 rounded-md z-0"
@@ -1028,7 +875,7 @@ export default function Home() {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <Image
-                    src="/placeholder.svg?height=400&width=600"
+                    src="/Temple_at_Sunset.jpg"
                     alt="Temple at Sunset"
                     width={600}
                     height={400}
@@ -1069,6 +916,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
+
+
 
         {/* Contact Form */}
         <section id="contact" className="py-12 md:py-24 bg-white">
@@ -1118,7 +969,7 @@ export default function Home() {
                     </motion.div>
                     <div>
                       <p className="text-sm text-gray-500">Call Us</p>
-                      <p className="font-medium">+91 98765 43210</p>
+                      <p className="font-medium">+91 9870299230</p>
                     </div>
                   </motion.div>
                   <motion.div
@@ -1142,7 +993,7 @@ export default function Home() {
                     </motion.div>
                     <div>
                       <p className="text-sm text-gray-500">Email Us</p>
-                      <p className="font-medium">info@bharatyatra.com</p>
+                      <p className="font-medium">info@kashikiyatra.com</p>
                     </div>
                   </motion.div>
                   <motion.div
@@ -1303,6 +1154,8 @@ export default function Home() {
         </section>
       </main>
 
+
+
       {/* Footer */}
       <motion.footer
         className="bg-amber-900 text-amber-100"
@@ -1337,11 +1190,11 @@ export default function Home() {
                     }}
                   >
                     <Image
-                      src="/placeholder.svg?height=40&width=40"
+                      src="/logoimage.png"
                       alt="Bharat Yatra logo"
                       width={40}
                       height={40}
-                      className="rounded-full border-2 border-amber-500"
+                      className="rounded-full "
                     />
                   </motion.div>
                   <motion.span
@@ -1359,7 +1212,7 @@ export default function Home() {
                       repeatType: "loop",
                     }}
                   >
-                    भारत यात्रा
+                    Kashi Ki Yatra
                   </motion.span>
                 </motion.div>
                 <p className="text-amber-200">
