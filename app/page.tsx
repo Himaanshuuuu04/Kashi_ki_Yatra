@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   MapPin,
   Calendar,
@@ -18,51 +18,59 @@ import {
   MapPinned,
   Clock,
   Award,
-} from "lucide-react"
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
-import { useState, useEffect, useRef } from "react"
-import { AnimatedSection } from "@/components/animated-section"
-import { AnimatedCard } from "@/components/animated-card"
-import { FloatingElement } from "@/components/floating-element"
-import { TextReveal } from "@/components/text-reveal"
-import { AnimatedCounter } from "@/components/animated-counter"
-import { CursorHighlight } from "@/components/cursor-highlight"
-import { ParticleBackground } from "@/components/particle-background"
-import { AnimatedIcon } from "@/components/animated-icon"
-import { ScrollProgress } from "@/components/scroll-progress"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-
+} from "lucide-react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { AnimatedSection } from "@/components/animated-section";
+import { AnimatedCard } from "@/components/animated-card";
+import { FloatingElement } from "@/components/floating-element";
+import { TextReveal } from "@/components/text-reveal";
+import { AnimatedCounter } from "@/components/animated-counter";
+import { CursorHighlight } from "@/components/cursor-highlight";
+import { ParticleBackground } from "@/components/particle-background";
+import { AnimatedIcon } from "@/components/animated-icon";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { all } from "@/components/Content/destination-card-all.js";
+import {DestinationCard} from "@/components/Destination-cards-all";
+import { hillstations } from "@/components/Content/destination-card-hills.js";
+import {religious} from "@/components/Content/destination-card-religious.js";
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState("all")
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("all");
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   // References for parallax effects
-  const heroRef = useRef(null)
-  const { scrollYProgress } = useScroll()
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
-  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.1])
-  const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 100])
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll();
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.1]);
+  const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 100]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
+      setScrollY(window.scrollY);
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     // Simulate loading delay for entrance animation
     const timer = setTimeout(() => {
-      setIsLoaded(true)
-    }, 500)
+      setIsLoaded(true);
+    }, 500);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-      clearTimeout(timer)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
 
   // Animated stats
   const stats = [
@@ -70,17 +78,13 @@ export default function Home() {
     { icon: MapPinned, label: "Destinations", value: 120, suffix: "+" },
     { icon: Clock, label: "Years Experience", value: 15, suffix: "" },
     { icon: Award, label: "Travel Awards", value: 25, suffix: "" },
-  ]
+  ];
 
   return (
     <div className="flex min-h-screen flex-col overflow-hidden ">
       <ScrollProgress />
       <CursorHighlight />
       <ParticleBackground />
-
-
-
-
 
       {/* Initial Page Load Animation */}
       <AnimatePresence>
@@ -139,12 +143,6 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-
-
-
-
-
-
       {/* Header */}
       <motion.header
         initial={{ y: -100 }}
@@ -155,13 +153,19 @@ export default function Home() {
         <div className="container flex h-16 items-center bg-amber-50 justify-between px-4">
           <motion.div
             className="flex items-center gap-2"
-            whileHover={{ scale: 1.10 }}
+            whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
           >
             <motion.div
               animate={{
                 rotate: [0, 10, 0, -10, 0],
-                borderColor: ["#f59e0b", "#d97706", "#b45309", "#d97706", "#f59e0b"],
+                borderColor: [
+                  "#f59e0b",
+                  "#d97706",
+                  "#b45309",
+                  "#d97706",
+                  "#f59e0b",
+                ],
               }}
               transition={{
                 duration: 5,
@@ -196,30 +200,41 @@ export default function Home() {
             </motion.span>
           </motion.div>
           <nav className="hidden md:flex items-center gap-8">
-            {[ "Religious Tours","Destinations", "Packages","Cabs", "Hotel & Food","About Us", "Contact"].map(
-              (item, index) => (
-                <motion.div
-                  key={item}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.0 + index * 0.1 }}
-                  whileHover={{
-                    scale: 1.2,
-                    color: "#d97706",
-                    textShadow: "0px 0px 8px rgba(217,119,6,0.3)",
-                  }}
+            {[
+              "Religious Tours",
+              "Destinations",
+              "Packages",
+              "Cabs",
+              "Hotel & Food",
+              "About Us",
+              "Contact",
+            ].map((item, index) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.0 + index * 0.1 }}
+                whileHover={{
+                  scale: 1.2,
+                  color: "#d97706",
+                  textShadow: "0px 0px 8px rgba(217,119,6,0.3)",
+                }}
+              >
+                <Link
+                  href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
+                  className="text-md font-medium transition-all "
                 >
-                  <Link
-                    href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
-                    className="text-md font-medium transition-all "
-                  >
-                    {item}
-                  </Link>
-                </motion.div>
-              ),
-            )}
+                  {item}
+                </Link>
+              </motion.div>
+            ))}
           </nav>
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
             <Menu className="h-6 w-6" />
             <span className="sr-only">Toggle menu</span>
           </Button>
@@ -246,11 +261,6 @@ export default function Home() {
         </div>
       </motion.header>
 
-
-
-
-
-
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -262,24 +272,30 @@ export default function Home() {
             className="md:hidden bg-white border-b"
           >
             <div className="container py-4 flex flex-col space-y-3 px-4">
-              {["Religious Tours","Destinations", "Packages","Cabs", "Hotel & Food","About Us", "Contact"].map(
-                (item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
+              {[
+                "Religious Tours",
+                "Destinations",
+                "Packages",
+                "Cabs",
+                "Hotel & Food",
+                "About Us",
+                "Contact",
+              ].map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <Link
+                    href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
+                    className="text-sm font-medium hover:text-amber-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
                   >
-                    <Link
-                      href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
-                      className="text-sm font-medium hover:text-amber-600 transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {item}
-                    </Link>
-                  </motion.div>
-                ),
-              )}
+                    {item}
+                  </Link>
+                </motion.div>
+              ))}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -300,11 +316,6 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-
-
-
-
-
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative h-[90vh]" ref={heroRef}>
@@ -312,13 +323,7 @@ export default function Home() {
             className="absolute inset-0 bg-gradient-to-r from-amber-900/90 to-amber-800/50 z-10 backdrop-blur-xs "
             style={{ opacity: heroOpacity }}
           />
-          <motion.div
-            style={{
-              scale: heroScale,
-              y: heroY,
-            }}
-            className="absolute inset-0"
-          >
+          <div className="absolute inset-0">
             <Image
               src="/placeholder1.jpg?height=600&width=1600"
               alt="Ancient Indian Temple"
@@ -327,7 +332,7 @@ export default function Home() {
               className="w-full h-full object-cover"
               priority
             />
-          </motion.div>
+          </div>
           <motion.div
             className="absolute inset-0 z-20 flex items-center justify-center"
             initial={{ opacity: 0 }}
@@ -370,8 +375,9 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
-                Embark on a spiritual journey through ancient temples and serene hill stations. Connect with India's
-                rich cultural heritage and natural wonders.
+                Embark on a spiritual journey through ancient temples and serene
+                hill stations. Connect with India's rich cultural heritage and
+                natural wonders.
               </motion.p>
               <motion.div
                 className="flex flex-col sm:flex-row justify-center gap-4"
@@ -390,12 +396,19 @@ export default function Home() {
                     whileHover={{ x: "100%" }}
                     transition={{ duration: 0.5 }}
                   />
-                  <Button className="bg-amber-600 hover:bg-amber-700 text-white relative z-10">
+                  <Button className="bg-amber-400 hover:bg-amber-600 text-black relative z-10">
                     Explore our packages
                   </Button>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
-                  <Button variant="outline" className="border-white text-black hover:bg-white/80 relative">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative"
+                >
+                  <Button
+                    variant="outline"
+                    className="border-white text-black hover:bg-white/80 relative"
+                  >
                     <motion.span
                       className="absolute inset-0 bg-white/10 rounded-md z-0"
                       initial={{ scale: 0, opacity: 0 }}
@@ -408,16 +421,11 @@ export default function Home() {
               </motion.div>
             </div>
           </motion.div>
-          <div className="absolute bottom-0 w-full">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="text-background fill-current">
-              <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path>
-            </svg>
-          </div>
-
-
-
-
-
+          {/* <div className="absolute bottom-0 w-full">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" className="text-background fill-current">
+                <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path>
+              </svg>
+            </div> */}
 
           {/* Scroll indicator */}
           <motion.div
@@ -443,19 +451,12 @@ export default function Home() {
                 animate={{ y: [0, 15, 0] }}
                 transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
               />
-              
             </motion.div>
-            Scroll Down
           </motion.div>
         </section>
 
-
-
-
-
-
         {/* Stats Section */}
-        <section className="py-12 bg-white relative z-10">
+        {/* <section className="py-12 bg-white relative z-10">
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
               {stats.map((stat, index) => (
@@ -486,374 +487,200 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
-
-
-
-
-
+        </section> */}
 
         {/* Featured Destinations */}
         <section id="destinations" className="py-12 md:py-24 relative">
-        <motion.div
-            style={{
-              scale: heroScale,
-              y: heroY,
-            }}
+          {/* <div
+           
             className="absolute inset-0"
           >
-            <Image
+             <Image
               src="/featureBg.jpg"
               alt="Ancient Indian Temple"
               width={1600}
               height={600}
               className="w-full h-full object-cover opacity-20"
               priority
-            />
-          </motion.div>
+            /> 
+           
+          </div> */}
           <motion.div>
-          {/* <FloatingElement className="absolute top-20 left-10 opacity-20 hidden lg:block">
-            <Image
-              src="/placeholder.svg?height=100&width=100"
-              alt="Decorative element"
-              width={100}
-              height={100}
-              className="rotate-45"
-            />
-          </FloatingElement>
-          <FloatingElement className="absolute bottom-20 right-10 opacity-20 hidden lg:block" duration={4} delay={1}>
-            <Image
-              src="/featureBg.jpg"
-              alt="Decorative element"
-              width={100}
-              height={100}
-              className="-rotate-12"
-            />
-          </FloatingElement> */}
+            
 
-          <div className="container px-4 md:px-6">
-            <AnimatedSection>
-              <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <motion.div
-                  className="inline-block rounded-lg bg-amber-100 px-3 py-1 text-sm text-amber-800"
-                  whileHover={{
-                    scale: 1.05,
-                    backgroundColor: "#fcd34d",
-                    boxShadow: "0px 0px 15px rgba(251,191,36,1)",
-                  }}
-                >
-                  Featured Destinations
-                </motion.div>
-                <TextReveal
-                  text="Sacred  Journeys  Await"
-                  className="text-3xl font-bold  sm:text-4xl md:text-5xl text-amber-900"
-                  delay={0.2}
-                />
-                <p className="max-w-[700px] text-gray-600 md:text-xl/relaxed">
-                  Discover the most revered pilgrimage sites across India.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.2}>
-              <Tabs defaultValue="all" className="mt-12" value={activeTab} onValueChange={setActiveTab}>
-                <div className="flex justify-center">
-                  <TabsList className="bg-amber-100">
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
-                      <TabsTrigger
-                        value="all"
-                        className="data-[state=active]:bg-amber-600 data-[state=active]:text-white relative z-10"
-                        onClick={() => setActiveTab("all")}
-                      >
-                        <motion.span
-                          className="absolute inset-0 bg-amber-600 rounded-md z-0"
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{
-                            scale: activeTab === "all" ? 1 : 0,
-                            opacity: activeTab === "all" ? 1 : 0,
-                          }}
-                          transition={{ duration: 0.3 }}
-                        />
-                        <span className="relative z-10">All</span>
-                      </TabsTrigger>
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
-                      <TabsTrigger
-                        value="religious"
-                        className="data-[state=active]:bg-amber-600 data-[state=active]:text-white relative z-10"
-                        onClick={() => setActiveTab("religious")}
-                      >
-                        <motion.span
-                          className="absolute inset-0 bg-amber-600 rounded-md z-0"
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{
-                            scale: activeTab === "religious" ? 1 : 0,
-                            opacity: activeTab === "religious" ? 1 : 0,
-                          }}
-                          transition={{ duration: 0.3 }}
-                        />
-                        <span className="relative z-10">Religious</span>
-                      </TabsTrigger>
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
-                      <TabsTrigger
-                        value="hillstations"
-                        className="data-[state=active]:bg-amber-600 data-[state=active]:text-white relative z-10"
-                        onClick={() => setActiveTab("hillstations")}
-                      >
-                        <motion.span
-                          className="absolute inset-0 bg-amber-600 rounded-md z-0"
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{
-                            scale: activeTab === "hillstations" ? 1 : 0,
-                            opacity: activeTab === "hillstations" ? 1 : 0,
-                          }}
-                          transition={{ duration: 0.3 }}
-                        />
-                        <span className="relative z-10">Hill Stations</span>
-                      </TabsTrigger>
-                    </motion.div>
-                  </TabsList>
-                </div>
-
-                <AnimatePresence mode="wait">
+            <div className="container px-4 md:px-6">
+              <AnimatedSection>
+                <div className="flex flex-col items-center justify-center space-y-4 text-center">
                   <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3 }}
+                    className="inline-block rounded-lg bg-amber-100 px-3 py-1 text-sm text-amber-800"
+                    whileHover={{
+                      scale: 1.05,
+                      backgroundColor: "#fcd34d",
+                      boxShadow: "0px 0px 15px rgba(251,191,36,1)",
+                    }}
                   >
-                    <TabsContent value="all" className="mt-8">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Varanasi */}
-                        <AnimatedCard delay={0.1}>
-                          <div className="relative overflow-hidden group">
-                            <Image
-                              src="/vanarsi.jpg"
-                              alt="Varanasi Ghats"
-                              width={500}
-                              height={300}
-                              className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            <motion.div
-                              className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                              initial={{ opacity: 0 }}
-                              whileHover={{ opacity: 1 }}
-                            />
-                            <div className="absolute top-3 right-3 bg-amber-600 text-white px-2 py-1 rounded text-xs">
-                              Religious
-                            </div>
-                            <motion.div
-                              className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                              initial={{ y: 20, opacity: 0 }}
-                              whileHover={{ y: 0, opacity: 1 }}
-                            >
-                              <p className="text-sm font-medium">Explore the sacred ghats</p>
-                            </motion.div>
-                          </div>
-                          <CardContent className="p-6">
-                            <div className="flex items-center justify-between mb-2">
-                              <h3 className="text-xl font-bold text-amber-900">Varanasi</h3>
-                              <div className="flex items-center">
-                                <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-                                <span className="text-sm ml-1">4.8</span>
-                              </div>
-                            </div>
-                            <div className="flex items-center text-gray-500 text-sm mb-4">
-                              <MapPin className="h-4 w-4 mr-1" />
-                              <span>Uttar Pradesh</span>
-                            </div>
-                            <p className="text-gray-600 mb-4 ">
-                              Experience the spiritual essence of India at the sacred ghats along the holy Ganges River.
-                            </p>
-                            <div className="flex justify-between items-center">
-                              <motion.span
-                                className="text-amber-800 font-bold"
-                                whileHover={{
-                                  scale: 1.05,
-                                  textShadow: "0px 0px 5px rgba(217,119,6,0.3)",
-                                }}
-                              >
-                                ₹15,999 onwards
-                              </motion.span>
-                              <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400 }}>
-                                <Button variant="link" className="text-amber-600 p-0 group">
-                                  View Details
-                                  <ChevronRight className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
-                                </Button>
-                              </motion.div>
-                            </div>
-                          </CardContent>
-                        </AnimatedCard>
-
-                        {/* prayag*/}
-                        <AnimatedCard delay={0.2}>
-                          <div className="relative overflow-hidden group">
-                            <Image
-                              src="/prayag.webp"
-                              alt="Shimla Hills"
-                              width={500}
-                              height={300}
-                              className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            <motion.div
-                              className="absolute inset-0 bg-gradient-to-t from-green-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                              initial={{ opacity: 0 }}
-                              whileHover={{ opacity: 1 }}
-                            />
-                            <div className="absolute top-3 right-3 bg-green-600 text-white px-2 py-1 rounded text-xs">
-                              Religious
-                            </div>
-                            <motion.div
-                              className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                              initial={{ y: 20, opacity: 0 }}
-                              whileHover={{ y: 0, opacity: 1 }}
-                            >
-                              <p className="text-sm font-medium">Discover Himalayan beauty</p>
-                            </motion.div>
-                          </div>
-                          <CardContent className="p-6">
-                            <div className="flex items-center justify-between mb-2">
-                              <h3 className="text-xl font-bold text-amber-900">Prayagraj</h3>
-                              <div className="flex items-center">
-                                <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-                                <span className="text-sm ml-1">4.7</span>
-                              </div>
-                            </div>
-                            <div className="flex items-center text-gray-500 text-sm mb-4">
-                              <MapPin className="h-4 w-4 mr-1" />
-                              <span>Uttar Pradesh</span>
-                            </div>
-                            <p className="text-gray-600 mb-4">
-                              Discover the colonial charm and breathtaking Himalayan views in this popular hill retreat.
-                            </p>
-                            <div className="flex justify-between items-center">
-                              <motion.span
-                                className="text-amber-800 font-bold"
-                                whileHover={{
-                                  scale: 1.05,
-                                  textShadow: "0px 0px 5px rgba(217,119,6,0.3)",
-                                }}
-                              >
-                                ₹18,499 onwards
-                              </motion.span>
-                              <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400 }}>
-                                <Button variant="link" className="text-amber-600 p-0 group">
-                                  View Details
-                                  <ChevronRight className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
-                                </Button>
-                              </motion.div>
-                            </div>
-                          </CardContent>
-                        </AnimatedCard>
-
-                        {/* Ayodhya */}
-                        <AnimatedCard delay={0.3}>
-                          <div className="relative overflow-hidden group">
-                            <Image
-                              src="/ayodhya.jpg"
-                              alt="Ayodhya Temple"
-                             
-                              width={500}
-                              height={300}
-                              className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-                            <motion.div
-                              className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                              initial={{ opacity: 0 }}
-                              whileHover={{ opacity: 1 }}
-                            />
-                            <div className="absolute top-3 right-3 bg-amber-600 text-white px-2 py-1 rounded text-xs">
-                              Religious
-                            </div>
-                            <motion.div
-                              className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                              initial={{ y: 20, opacity: 0 }}
-                              whileHover={{ y: 0, opacity: 1 }}
-                            >
-                              <p className="text-sm font-medium">Visit Ram Mandir</p>
-                            </motion.div>
-                          </div>
-                          <CardContent className="p-6">
-                            <div className="flex items-center justify-between mb-2">
-                              <h3 className="text-xl font-bold text-amber-900">Ayodhya</h3>
-                              <div className="flex items-center">
-                                <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-                                <span className="text-sm ml-1">4.9</span>
-                              </div>
-                            </div>
-                            <div className="flex items-center text-gray-500 text-sm mb-4">
-                              <MapPin className="h-4 w-4 mr-1" />
-                              <span>Andhra Pradesh</span>
-                            </div>
-                            <p className="text-gray-600 mb-4">
-                              Visit one of the world's most visited religious sites, the Sri Venkateswara Temple.
-                            </p>
-                            <div className="flex justify-between items-center">
-                              <motion.span
-                                className="text-amber-800 font-bold"
-                                whileHover={{
-                                  scale: 1.05,
-                                  textShadow: "0px 0px 5px rgba(217,119,6,0.3)",
-                                }}
-                              >
-                                ₹12,999 onwards
-                              </motion.span>
-                              <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400 }}>
-                                <Button variant="link" className="text-amber-600 p-0 group">
-                                  View Details
-                                  <ChevronRight className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
-                                </Button>
-                              </motion.div>
-                            </div>
-                          </CardContent>
-                        </AnimatedCard>
-                      </div>
-                    </TabsContent>
-
-                    <TabsContent value="religious" className="mt-8">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Religious destinations content */}
-                        {/* Similar structure to "all" tab but with religious destinations only */}
-                      </div>
-                    </TabsContent>
-
-                    <TabsContent value="hillstations" className="mt-8">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Hill stations content */}
-                        {/* Similar structure to "all" tab but with hill stations only */}
-                      </div>
-                    </TabsContent>
+                    Featured Destinations
                   </motion.div>
-                </AnimatePresence>
-              </Tabs>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.4}>
-              <div className="flex justify-center mt-8">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative overflow-hidden rounded-md"
-                >
-                  <motion.span
-                    className="absolute inset-0 bg-amber-500 z-0"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.5 }}
+                  <TextReveal
+                    text="Sacred  Journeys  Await"
+                    className="text-3xl font-bold  sm:text-4xl md:text-5xl text-amber-900"
+                    delay={0.2}
                   />
-                  <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">View All Destinations</Button>
-                </motion.div>
-              </div>
-            </AnimatedSection>
-          </div>
+                  <p className="max-w-[700px] text-gray-600 md:text-xl/relaxed">
+                    Discover the most revered pilgrimage sites across India.
+                  </p>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection delay={0.2}>
+                <Tabs
+                  defaultValue="all"
+                  className="mt-12"
+                  value={activeTab}
+                  onValueChange={setActiveTab}
+                >
+                  <div className="flex justify-center">
+                    <TabsList className="bg-amber-100">
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="relative"
+                      >
+                        <TabsTrigger
+                          value="all"
+                          className="data-[state=active]:bg-amber-600 data-[state=active]:text-white relative z-10"
+                          onClick={() => setActiveTab("all")}
+                        >
+                          <motion.span
+                            className="absolute inset-0 bg-amber-600 rounded-md z-0"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{
+                              scale: activeTab === "all" ? 1 : 0,
+                              opacity: activeTab === "all" ? 1 : 0,
+                            }}
+                            transition={{ duration: 0.3 }}
+                          />
+                          <span className="relative z-10">All</span>
+                        </TabsTrigger>
+                      </motion.div>
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="relative"
+                      >
+                        <TabsTrigger
+                          value="religious"
+                          className="data-[state=active]:bg-amber-600 data-[state=active]:text-white relative z-10"
+                          onClick={() => setActiveTab("religious")}
+                        >
+                          <motion.span
+                            className="absolute inset-0 bg-amber-600 rounded-md z-0"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{
+                              scale: activeTab === "religious" ? 1 : 0,
+                              opacity: activeTab === "religious" ? 1 : 0,
+                            }}
+                            transition={{ duration: 0.3 }}
+                          />
+                          <span className="relative z-10">Religious</span>
+                        </TabsTrigger>
+                      </motion.div>
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="relative"
+                      >
+                        <TabsTrigger
+                          value="hillstations"
+                          className="data-[state=active]:bg-amber-600 data-[state=active]:text-white relative z-10"
+                          onClick={() => setActiveTab("hillstations")}
+                        >
+                          <motion.span
+                            className="absolute inset-0 bg-amber-600 rounded-md z-0"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{
+                              scale: activeTab === "hillstations" ? 1 : 0,
+                              opacity: activeTab === "hillstations" ? 1 : 0,
+                            }}
+                            transition={{ duration: 0.3 }}
+                          />
+                          <span className="relative z-10">Hill Stations</span>
+                        </TabsTrigger>
+                      </motion.div>
+                    </TabsList>
+                  </div>
+
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeTab}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <TabsContent value="all" className="mt-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                         
+                          {all.map((place, index) => (
+                            <DestinationCard key={index} {...place} />
+                          ))}
+                          
+                        </div> 
+                      </TabsContent>
+
+                      <TabsContent value="religious" className="mt-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                         
+                         {religious.map((place, index) => (
+                           <DestinationCard key={index} {...place} />
+                         ))}
+                         
+                       </div> 
+                      </TabsContent>
+
+                      <TabsContent value="hillstations" className="mt-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                         
+                         {hillstations.map((place, index) => (
+                           <DestinationCard key={index} {...place} />
+                         ))}
+                         
+                       </div> 
+                      </TabsContent>
+                    </motion.div>
+                  </AnimatePresence>
+                </Tabs>
+              </AnimatedSection>
+
+              <AnimatedSection delay={0.4}>
+                <div className="flex justify-center mt-8">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative overflow-hidden rounded-md"
+                  >
+                    <motion.span
+                      className="absolute inset-0 bg-amber-500 z-0"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.5 }}
+                    />
+                    <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">
+                      View All Destinations
+                    </Button>
+                  </motion.div>
+                </div>
+              </AnimatedSection>
+            </div>
           </motion.div>
         </section>
 
         {/* Popular Packages */}
         <section id="packages" className="py-12 md:py-24 bg-white relative">
-          <FloatingElement className="absolute top-40 right-20 opacity-20 hidden lg:block" duration={5}>
+          <FloatingElement
+            className="absolute top-40 right-20 opacity-20 hidden lg:block"
+            duration={5}
+          >
             <Image
               src="/placeholder.svg?height=120&width=120"
               alt="Decorative element"
@@ -882,7 +709,8 @@ export default function Home() {
                   delay={0.2}
                 />
                 <p className="max-w-[700px] text-gray-600 md:text-xl/relaxed">
-                  Embark on carefully crafted journeys that combine spiritual enlightenment with natural beauty.
+                  Embark on carefully crafted journeys that combine spiritual
+                  enlightenment with natural beauty.
                 </p>
               </div>
             </AnimatedSection>
@@ -916,17 +744,22 @@ export default function Home() {
                     initial={{ y: 20, opacity: 0 }}
                     whileHover={{ y: 0, opacity: 1 }}
                   >
-                    <p className="text-sm font-medium">Sacred pilgrimage in the Himalayas</p>
+                    <p className="text-sm font-medium">
+                      Sacred pilgrimage in the Himalayas
+                    </p>
                   </motion.div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-amber-900 mb-2">Char Dham Yatra</h3>
+                  <h3 className="text-xl font-bold text-amber-900 mb-2">
+                    Char Dham Yatra
+                  </h3>
                   <div className="flex items-center text-gray-500 text-sm mb-4">
                     <Calendar className="h-4 w-4 mr-1" />
                     <span>12 Days / 11 Nights</span>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Complete the sacred pilgrimage to Yamunotri, Gangotri, Kedarnath, and Badrinath in the Himalayas.
+                    Complete the sacred pilgrimage to Yamunotri, Gangotri,
+                    Kedarnath, and Badrinath in the Himalayas.
                   </p>
                   <div className="flex flex-col gap-2 mb-4">
                     <div className="flex items-center text-gray-600">
@@ -949,7 +782,9 @@ export default function Home() {
                       >
                         ₹45,999
                       </motion.span>
-                      <span className="text-gray-500 text-sm ml-2 line-through">₹52,999</span>
+                      <span className="text-gray-500 text-sm ml-2 line-through">
+                        ₹52,999
+                      </span>
                     </div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
@@ -962,7 +797,9 @@ export default function Home() {
                         whileHover={{ x: "100%" }}
                         transition={{ duration: 0.5 }}
                       />
-                      <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">Book Now</Button>
+                      <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">
+                        Book Now
+                      </Button>
                     </motion.div>
                   </div>
                 </CardContent>
@@ -971,13 +808,7 @@ export default function Home() {
               {/* Golden Triangle with Varanasi */}
               <AnimatedCard delay={0.2}>
                 <div className="relative overflow-hidden group">
-                  <Image
-                    src="/placeholder.svg?height=300&width=500"
-                    alt="Golden Triangle"
-                    width={500}
-                    height={300}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <div className="h-full w-full bg-white bg-opacity-20 [background-image:radial-gradient(circle_at_center_center,_#ffc81d,_#ffffff),_repeating-radial-gradient(circle_at_center_center,_#ffc81d,_#ffc81d,_20px,_transparent_40px,_transparent_20px)] [background-blend-mode:multiply]" />
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     initial={{ opacity: 0 }}
@@ -988,17 +819,22 @@ export default function Home() {
                     initial={{ y: 20, opacity: 0 }}
                     whileHover={{ y: 0, opacity: 1 }}
                   >
-                    <p className="text-sm font-medium">Explore India's cultural triangle</p>
+                    <p className="text-sm font-medium">
+                      Explore India's cultural triangle
+                    </p>
                   </motion.div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-amber-900 mb-2">Golden Triangle with Varanasi</h3>
+                  <h3 className="text-xl font-bold text-amber-900 mb-2">
+                    Golden Triangle with Varanasi
+                  </h3>
                   <div className="flex items-center text-gray-500 text-sm mb-4">
                     <Calendar className="h-4 w-4 mr-1" />
                     <span>8 Days / 7 Nights</span>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Explore Delhi, Agra, Jaipur, and the spiritual city of Varanasi in one comprehensive tour.
+                    Explore Delhi, Agra, Jaipur, and the spiritual city of
+                    Varanasi in one comprehensive tour.
                   </p>
                   <div className="flex flex-col gap-2 mb-4">
                     <div className="flex items-center text-gray-600">
@@ -1021,7 +857,9 @@ export default function Home() {
                       >
                         ₹32,499
                       </motion.span>
-                      <span className="text-gray-500 text-sm ml-2 line-through">₹38,999</span>
+                      <span className="text-gray-500 text-sm ml-2 line-through">
+                        ₹38,999
+                      </span>
                     </div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
@@ -1034,7 +872,9 @@ export default function Home() {
                         whileHover={{ x: "100%" }}
                         transition={{ duration: 0.5 }}
                       />
-                      <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">Book Now</Button>
+                      <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">
+                        Book Now
+                      </Button>
                     </motion.div>
                   </div>
                 </CardContent>
@@ -1060,17 +900,22 @@ export default function Home() {
                     initial={{ y: 20, opacity: 0 }}
                     whileHover={{ y: 0, opacity: 1 }}
                   >
-                    <p className="text-sm font-medium">Peaceful mountain retreat</p>
+                    <p className="text-sm font-medium">
+                      Peaceful mountain retreat
+                    </p>
                   </motion.div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-amber-900 mb-2">Himalayan Hill Station Retreat</h3>
+                  <h3 className="text-xl font-bold text-amber-900 mb-2">
+                    Himalayan Hill Station Retreat
+                  </h3>
                   <div className="flex items-center text-gray-500 text-sm mb-4">
                     <Calendar className="h-4 w-4 mr-1" />
                     <span>10 Days / 9 Nights</span>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Rejuvenate your soul with a peaceful retreat to Shimla, Manali, and Dharamshala.
+                    Rejuvenate your soul with a peaceful retreat to Shimla,
+                    Manali, and Dharamshala.
                   </p>
                   <div className="flex flex-col gap-2 mb-4">
                     <div className="flex items-center text-gray-600">
@@ -1093,7 +938,9 @@ export default function Home() {
                       >
                         ₹38,499
                       </motion.span>
-                      <span className="text-gray-500 text-sm ml-2 line-through">₹42,999</span>
+                      <span className="text-gray-500 text-sm ml-2 line-through">
+                        ₹42,999
+                      </span>
                     </div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
@@ -1106,7 +953,9 @@ export default function Home() {
                         whileHover={{ x: "100%" }}
                         transition={{ duration: 0.5 }}
                       />
-                      <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">Book Now</Button>
+                      <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">
+                        Book Now
+                      </Button>
                     </motion.div>
                   </div>
                 </CardContent>
@@ -1115,8 +964,15 @@ export default function Home() {
 
             <AnimatedSection delay={0.4}>
               <div className="flex justify-center mt-8">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
-                  <Button variant="outline" className="border-amber-600 text-amber-600 hover:bg-amber-50 relative">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative"
+                >
+                  <Button
+                    variant="outline"
+                    className="border-amber-600 text-amber-600 hover:bg-amber-50 relative"
+                  >
                     <motion.span
                       className="absolute inset-0 bg-amber-50 rounded-md z-0"
                       initial={{ scale: 0, opacity: 0 }}
@@ -1133,7 +989,11 @@ export default function Home() {
 
         {/* Testimonials */}
         <section className="py-12 md:py-24 bg-amber-50/50 relative">
-          <FloatingElement className="absolute bottom-20 left-10 opacity-20 hidden lg:block" duration={4} delay={0.5}>
+          <FloatingElement
+            className="absolute bottom-20 left-10 opacity-20 hidden lg:block"
+            duration={4}
+            delay={0.5}
+          >
             <Image
               src="/placeholder.svg?height=100&width=100"
               alt="Decorative element"
@@ -1162,7 +1022,8 @@ export default function Home() {
                   delay={0.2}
                 />
                 <p className="max-w-[700px] text-gray-600 md:text-xl/relaxed">
-                  Hear from pilgrims who found peace, connection, and transformation through our sacred journeys.
+                  Hear from pilgrims who found peace, connection, and
+                  transformation through our sacred journeys.
                 </p>
               </div>
             </AnimatedSection>
@@ -1218,9 +1079,10 @@ export default function Home() {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      "The Char Dham Yatra was a life-changing experience. The guides were knowledgeable about the
-                      spiritual significance of each site, and the arrangements were perfect. I felt a deep connection
-                      to our ancient traditions."
+                      "The Char Dham Yatra was a life-changing experience. The
+                      guides were knowledgeable about the spiritual significance
+                      of each site, and the arrangements were perfect. I felt a
+                      deep connection to our ancient traditions."
                     </motion.p>
                   </div>
                 </CardContent>
@@ -1276,9 +1138,10 @@ export default function Home() {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      "Our family trip to Shimla and Manali was perfectly organized. The accommodations were
-                      comfortable, and the itinerary balanced spiritual sites with natural beauty. The children loved
-                      the adventure activities!"
+                      "Our family trip to Shimla and Manali was perfectly
+                      organized. The accommodations were comfortable, and the
+                      itinerary balanced spiritual sites with natural beauty.
+                      The children loved the adventure activities!"
                     </motion.p>
                   </div>
                 </CardContent>
@@ -1326,7 +1189,11 @@ export default function Home() {
                         >
                           <Star
                             key={i}
-                            className={`h-4 w-4 ${i < 4 ? "fill-amber-500 text-amber-500" : "text-gray-300"}`}
+                            className={`h-4 w-4 ${
+                              i < 4
+                                ? "fill-amber-500 text-amber-500"
+                                : "text-gray-300"
+                            }`}
                           />
                         </motion.div>
                       ))}
@@ -1337,8 +1204,10 @@ export default function Home() {
                       whileInView={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                      "The Golden Triangle with Varanasi tour exceeded my expectations. Witnessing the Ganga Aarti at
-                      Varanasi was a deeply moving experience. The guides were knowledgeable and accommodating."
+                      "The Golden Triangle with Varanasi tour exceeded my
+                      expectations. Witnessing the Ganga Aarti at Varanasi was a
+                      deeply moving experience. The guides were knowledgeable
+                      and accommodating."
                     </motion.p>
                   </div>
                 </CardContent>
@@ -1370,8 +1239,9 @@ export default function Home() {
                   delay={0.1}
                 />
                 <p className="mt-4 text-amber-100 md:text-xl/relaxed max-w-[600px]">
-                  Let us guide you through the spiritual heart of India. Our expert team will create a personalized
-                  itinerary that combines sacred sites, cultural experiences, and natural beauty.
+                  Let us guide you through the spiritual heart of India. Our
+                  expert team will create a personalized itinerary that combines
+                  sacred sites, cultural experiences, and natural beauty.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <motion.div
@@ -1389,8 +1259,15 @@ export default function Home() {
                       Plan Your Journey
                     </Button>
                   </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
-                    <Button variant="outline" className="border-white text-white hover:bg-amber-700 relative">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative"
+                  >
+                    <Button
+                      variant="outline"
+                      className="border-white text-white hover:bg-amber-700 relative"
+                    >
                       <motion.span
                         className="absolute inset-0 bg-amber-700 rounded-md z-0"
                         initial={{ scale: 0, opacity: 0 }}
@@ -1473,8 +1350,9 @@ export default function Home() {
                   delay={0.1}
                 />
                 <p className="text-gray-600 mb-8 max-w-[500px]">
-                  Our travel experts are ready to assist you in planning your perfect pilgrimage or hill station
-                  retreat. Reach out to us for personalized assistance.
+                  Our travel experts are ready to assist you in planning your
+                  perfect pilgrimage or hill station retreat. Reach out to us
+                  for personalized assistance.
                 </p>
 
                 <div className="space-y-4 mb-8">
@@ -1483,8 +1361,10 @@ export default function Home() {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
-                    whileHover={{ x: 5, backgroundColor: "rgba(254, 243, 199, 0.2)" }}
-            
+                    whileHover={{
+                      x: 5,
+                      backgroundColor: "rgba(254, 243, 199, 0.2)",
+                    }}
                   >
                     <motion.div
                       className="bg-amber-100 p-3 rounded-full"
@@ -1501,11 +1381,13 @@ export default function Home() {
                     </div>
                   </motion.div>
                   <motion.div
-            
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    whileHover={{ x: 5, backgroundColor: "rgba(254, 243, 199, 0.2)" }}
+                    whileHover={{
+                      x: 5,
+                      backgroundColor: "rgba(254, 243, 199, 0.2)",
+                    }}
                     className="p-2 rounded-lg flex items-center gap-3"
                   >
                     <motion.div
@@ -1526,7 +1408,10 @@ export default function Home() {
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    whileHover={{ x: 5, backgroundColor: "rgba(254, 243, 199, 0.2)" }}
+                    whileHover={{
+                      x: 5,
+                      backgroundColor: "rgba(254, 243, 199, 0.2)",
+                    }}
                     className="p-2 rounded-lg flex items-center gap-3"
                   >
                     <motion.div
@@ -1540,7 +1425,9 @@ export default function Home() {
                     </motion.div>
                     <div>
                       <p className="text-sm text-gray-500">Visit Us</p>
-                      <p className="font-medium">123 Heritage Lane, New Delhi, India</p>
+                      <p className="font-medium">
+                        123 Heritage Lane, New Delhi, India
+                      </p>
                     </div>
                   </motion.div>
                 </div>
@@ -1558,7 +1445,10 @@ export default function Home() {
                           transition={{ duration: 0.3 }}
                         >
                           <Label htmlFor="name">Full Name</Label>
-                          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                          <motion.div
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
                             <Input
                               id="name"
                               placeholder="Your name"
@@ -1573,7 +1463,10 @@ export default function Home() {
                           transition={{ duration: 0.3, delay: 0.1 }}
                         >
                           <Label htmlFor="email">Email</Label>
-                          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                          <motion.div
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
                             <Input
                               id="email"
                               type="email"
@@ -1591,7 +1484,10 @@ export default function Home() {
                           transition={{ duration: 0.3, delay: 0.2 }}
                         >
                           <Label htmlFor="phone">Phone</Label>
-                          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                          <motion.div
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
                             <Input
                               id="phone"
                               placeholder="Your phone number"
@@ -1605,8 +1501,13 @@ export default function Home() {
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: 0.3 }}
                         >
-                          <Label htmlFor="destination">Preferred Destination</Label>
-                          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                          <Label htmlFor="destination">
+                            Preferred Destination
+                          </Label>
+                          <motion.div
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
                             <Input
                               id="destination"
                               placeholder="Where do you want to go?"
@@ -1622,7 +1523,10 @@ export default function Home() {
                         transition={{ duration: 0.3, delay: 0.4 }}
                       >
                         <Label htmlFor="message">Your Message</Label>
-                        <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
+                        <motion.div
+                          whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.99 }}
+                        >
                           <textarea
                             id="message"
                             rows={4}
@@ -1645,7 +1549,9 @@ export default function Home() {
                           whileHover={{ x: "100%" }}
                           transition={{ duration: 0.5 }}
                         />
-                        <Button className="w-full bg-amber-600 hover:bg-amber-700 relative z-10">Send Message</Button>
+                        <Button className="w-full bg-amber-600 hover:bg-amber-700 relative z-10">
+                          Send Message
+                        </Button>
                       </motion.div>
                     </form>
                   </CardContent>
@@ -1668,11 +1574,20 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <AnimatedSection>
               <div className="space-y-4">
-                <motion.div className="flex items-center gap-2" whileHover={{ scale: 1.05 }}>
+                <motion.div
+                  className="flex items-center gap-2"
+                  whileHover={{ scale: 1.05 }}
+                >
                   <motion.div
                     animate={{
                       rotate: [0, 10, 0, -10, 0],
-                      borderColor: ["#f59e0b", "#d97706", "#b45309", "#d97706", "#f59e0b"],
+                      borderColor: [
+                        "#f59e0b",
+                        "#d97706",
+                        "#b45309",
+                        "#d97706",
+                        "#f59e0b",
+                      ],
                     }}
                     transition={{
                       duration: 5,
@@ -1707,12 +1622,20 @@ export default function Home() {
                   </motion.span>
                 </motion.div>
                 <p className="text-amber-200">
-                  Connecting souls to India's sacred heritage through transformative journeys.
+                  Connecting souls to India's sacred heritage through
+                  transformative journeys.
                 </p>
                 <div className="flex gap-4">
                   {["Facebook", "Instagram", "Twitter"].map((social, index) => (
-                    <motion.div key={social} whileHover={{ scale: 1.2, rotate: 5 }} whileTap={{ scale: 0.9 }}>
-                      <Link href="#" className="text-amber-200 hover:text-white">
+                    <motion.div
+                      key={social}
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <Link
+                        href="#"
+                        className="text-amber-200 hover:text-white"
+                      >
                         <span className="sr-only">{social}</span>
                         {social === "Facebook" && (
                           <svg
@@ -1743,7 +1666,14 @@ export default function Home() {
                             strokeLinejoin="round"
                             className="h-5 w-5"
                           >
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <rect
+                              width="20"
+                              height="20"
+                              x="2"
+                              y="2"
+                              rx="5"
+                              ry="5"
+                            ></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                             <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
                           </svg>
@@ -1774,7 +1704,13 @@ export default function Home() {
             <AnimatedSection delay={0.1}>
               <h3 className="text-lg font-bold mb-4 text-white">Quick Links</h3>
               <ul className="space-y-2">
-                {["Home", "About Us", "Destinations", "Packages", "Contact"].map((link, index) => (
+                {[
+                  "Home",
+                  "About Us",
+                  "Destinations",
+                  "Packages",
+                  "Contact",
+                ].map((link, index) => (
                   <motion.li
                     key={link}
                     initial={{ opacity: 0, x: -20 }}
@@ -1782,7 +1718,10 @@ export default function Home() {
                     transition={{ duration: 0.3, delay: 0.1 * index }}
                     whileHover={{ x: 5 }}
                   >
-                    <Link href="#" className="text-amber-200 hover:text-white group flex items-center">
+                    <Link
+                      href="#"
+                      className="text-amber-200 hover:text-white group flex items-center"
+                    >
                       <motion.span className="w-0 h-0.5 bg-white mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-300" />
                       {link}
                     </Link>
@@ -1792,9 +1731,17 @@ export default function Home() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <h3 className="text-lg font-bold mb-4 text-white">Popular Destinations</h3>
+              <h3 className="text-lg font-bold mb-4 text-white">
+                Popular Destinations
+              </h3>
               <ul className="space-y-2">
-                {["Varanasi", "Rishikesh", "Tirupati", "Shimla", "Darjeeling"].map((destination, index) => (
+                {[
+                  "Varanasi",
+                  "Rishikesh",
+                  "Tirupati",
+                  "Shimla",
+                  "Darjeeling",
+                ].map((destination, index) => (
                   <motion.li
                     key={destination}
                     initial={{ opacity: 0, x: -20 }}
@@ -1802,7 +1749,10 @@ export default function Home() {
                     transition={{ duration: 0.3, delay: 0.1 * index }}
                     whileHover={{ x: 5 }}
                   >
-                    <Link href="#" className="text-amber-200 hover:text-white group flex items-center">
+                    <Link
+                      href="#"
+                      className="text-amber-200 hover:text-white group flex items-center"
+                    >
                       <motion.span className="w-0 h-0.5 bg-white mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-300" />
                       {destination}
                     </Link>
@@ -1814,10 +1764,14 @@ export default function Home() {
             <AnimatedSection delay={0.3}>
               <h3 className="text-lg font-bold mb-4 text-white">Newsletter</h3>
               <p className="text-amber-200 mb-4">
-                Subscribe to receive updates on new packages and spiritual journeys.
+                Subscribe to receive updates on new packages and spiritual
+                journeys.
               </p>
               <form className="space-y-2">
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
                   <Input
                     type="email"
                     placeholder="Your email address"
@@ -1849,20 +1803,27 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <p className="text-amber-300 text-sm">&copy; {new Date().getFullYear()} भारत यात्रा. All rights reserved.</p>
+            <p className="text-amber-300 text-sm">
+              &copy; {new Date().getFullYear()} भारत यात्रा. All rights
+              reserved.
+            </p>
             <div className="flex gap-4 mt-4 md:mt-0">
-              {["Privacy Policy", "Terms of Service", "Refund Policy"].map((policy, index) => (
-                <motion.div key={policy} whileHover={{ y: -2 }}>
-                  <Link href="#" className="text-amber-300 hover:text-white text-sm">
-                    {policy}
-                  </Link>
-                </motion.div>
-              ))}
+              {["Privacy Policy", "Terms of Service", "Refund Policy"].map(
+                (policy, index) => (
+                  <motion.div key={policy} whileHover={{ y: -2 }}>
+                    <Link
+                      href="#"
+                      className="text-amber-300 hover:text-white text-sm"
+                    >
+                      {policy}
+                    </Link>
+                  </motion.div>
+                )
+              )}
             </div>
           </motion.div>
         </div>
       </motion.footer>
     </div>
-  )
+  );
 }
-
