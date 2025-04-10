@@ -1,5 +1,6 @@
 export const all = [
   {
+    id: 1,
     title: "Rishikesh",
     location: "Uttarakhand",
     tag: "Hill & Religious",
@@ -13,6 +14,7 @@ export const all = [
     gradient: "from-green-900/70",
   },
   {
+    id: 2,
     title: "Vaishno Devi",
     location: "Jammu & Kashmir",
     tag: "Hill & Religious",
@@ -26,6 +28,7 @@ export const all = [
     gradient: "from-amber-900/70",
   },
   {
+    id: 3,
     title: "Varanasi",
     location: "Uttar Pradesh",
     tag: "Religious",

@@ -38,9 +38,12 @@ import { ScrollProgress } from "@/components/scroll-progress";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { all } from "@/components/Content/destination-card-all.js";
-import {DestinationCard} from "@/components/Destination-cards-all";
+import { DestinationCard } from "@/components/Destination-cards-all";
 import { hillstations } from "@/components/Content/destination-card-hills.js";
-import {religious} from "@/components/Content/destination-card-religious.js";
+import { religious } from "@/components/Content/destination-card-religious.js";
+import { packages } from "@/components/Content/packages.js";
+import { PackagesCard } from "@/components/Packages-card";
+
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("all");
@@ -506,8 +509,6 @@ export default function Home() {
            
           </div> */}
           <motion.div>
-            
-
             <div className="container px-4 md:px-6">
               <AnimatedSection>
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -620,32 +621,26 @@ export default function Home() {
                     >
                       <TabsContent value="all" className="mt-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                         
-                          {all.map((place, index) => (
-                            <DestinationCard key={index} {...place} />
+                          {all.map((place) => (
+                            <DestinationCard key={place.id} {...place} />
                           ))}
-                          
-                        </div> 
+                        </div>
                       </TabsContent>
 
                       <TabsContent value="religious" className="mt-8">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                         
-                         {religious.map((place, index) => (
-                           <DestinationCard key={index} {...place} />
-                         ))}
-                         
-                       </div> 
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {religious.map((place) => (
+                            <DestinationCard key={place.id} {...place} />
+                          ))}
+                        </div>
                       </TabsContent>
 
                       <TabsContent value="hillstations" className="mt-8">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                         
-                         {hillstations.map((place, index) => (
-                           <DestinationCard key={index} {...place} />
-                         ))}
-                         
-                       </div> 
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {hillstations.map((place) => (
+                            <DestinationCard key={place.id} {...place} />
+                          ))}
+                        </div>
                       </TabsContent>
                     </motion.div>
                   </AnimatePresence>
@@ -676,20 +671,7 @@ export default function Home() {
         </section>
 
         {/* Popular Packages */}
-        <section id="packages" className="py-12 md:py-24 bg-white relative">
-          <FloatingElement
-            className="absolute top-40 right-20 opacity-20 hidden lg:block"
-            duration={5}
-          >
-            <Image
-              src="/placeholder.svg?height=120&width=120"
-              alt="Decorative element"
-              width={120}
-              height={120}
-              className="rotate-12"
-            />
-          </FloatingElement>
-
+        <section id="packages" className="py-12 md:py-24  relative">
           <div className="container px-4 md:px-6">
             <AnimatedSection>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -716,250 +698,9 @@ export default function Home() {
             </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              {/* Char Dham Package */}
-              <AnimatedCard delay={0.1}>
-                <div className="relative overflow-hidden group">
-                  <Image
-                    src="/placeholder.svg?height=300&width=500"
-                    alt="Char Dham"
-                    width={500}
-                    height={300}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-red-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  />
-                  <motion.div
-                    className="absolute top-3 right-3 bg-red-600 text-white px-2 py-1 rounded text-xs"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.5 }}
-                  >
-                    Best Seller
-                  </motion.div>
-                  <motion.div
-                    className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ y: 20, opacity: 0 }}
-                    whileHover={{ y: 0, opacity: 1 }}
-                  >
-                    <p className="text-sm font-medium">
-                      Sacred pilgrimage in the Himalayas
-                    </p>
-                  </motion.div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-amber-900 mb-2">
-                    Char Dham Yatra
-                  </h3>
-                  <div className="flex items-center text-gray-500 text-sm mb-4">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    <span>12 Days / 11 Nights</span>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    Complete the sacred pilgrimage to Yamunotri, Gangotri,
-                    Kedarnath, and Badrinath in the Himalayas.
-                  </p>
-                  <div className="flex flex-col gap-2 mb-4">
-                    <div className="flex items-center text-gray-600">
-                      <Users className="h-4 w-4 mr-2" />
-                      <span>Group Size: 15-20 people</span>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <MapPin className="h-4 w-4 mr-2" />
-                      <span>Uttarakhand</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <motion.span
-                        className="text-amber-800 font-bold text-xl"
-                        whileHover={{
-                          scale: 1.05,
-                          textShadow: "0px 0px 5px rgba(217,119,6,0.3)",
-                        }}
-                      >
-                        ₹45,999
-                      </motion.span>
-                      <span className="text-gray-500 text-sm ml-2 line-through">
-                        ₹52,999
-                      </span>
-                    </div>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="relative overflow-hidden rounded-md"
-                    >
-                      <motion.span
-                        className="absolute inset-0 bg-amber-500 z-0"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.5 }}
-                      />
-                      <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">
-                        Book Now
-                      </Button>
-                    </motion.div>
-                  </div>
-                </CardContent>
-              </AnimatedCard>
-
-              {/* Golden Triangle with Varanasi */}
-              <AnimatedCard delay={0.2}>
-                <div className="relative overflow-hidden group">
-                  <div className="h-full w-full bg-white bg-opacity-20 [background-image:radial-gradient(circle_at_center_center,_#ffc81d,_#ffffff),_repeating-radial-gradient(circle_at_center_center,_#ffc81d,_#ffc81d,_20px,_transparent_40px,_transparent_20px)] [background-blend-mode:multiply]" />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  />
-                  <motion.div
-                    className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ y: 20, opacity: 0 }}
-                    whileHover={{ y: 0, opacity: 1 }}
-                  >
-                    <p className="text-sm font-medium">
-                      Explore India's cultural triangle
-                    </p>
-                  </motion.div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-amber-900 mb-2">
-                    Golden Triangle with Varanasi
-                  </h3>
-                  <div className="flex items-center text-gray-500 text-sm mb-4">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    <span>8 Days / 7 Nights</span>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    Explore Delhi, Agra, Jaipur, and the spiritual city of
-                    Varanasi in one comprehensive tour.
-                  </p>
-                  <div className="flex flex-col gap-2 mb-4">
-                    <div className="flex items-center text-gray-600">
-                      <Users className="h-4 w-4 mr-2" />
-                      <span>Group Size: 10-15 people</span>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <MapPin className="h-4 w-4 mr-2" />
-                      <span>Delhi, UP, Rajasthan</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <motion.span
-                        className="text-amber-800 font-bold text-xl"
-                        whileHover={{
-                          scale: 1.05,
-                          textShadow: "0px 0px 5px rgba(217,119,6,0.3)",
-                        }}
-                      >
-                        ₹32,499
-                      </motion.span>
-                      <span className="text-gray-500 text-sm ml-2 line-through">
-                        ₹38,999
-                      </span>
-                    </div>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="relative overflow-hidden rounded-md"
-                    >
-                      <motion.span
-                        className="absolute inset-0 bg-amber-500 z-0"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.5 }}
-                      />
-                      <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">
-                        Book Now
-                      </Button>
-                    </motion.div>
-                  </div>
-                </CardContent>
-              </AnimatedCard>
-
-              {/* Himalayan Retreat */}
-              <AnimatedCard delay={0.3}>
-                <div className="relative overflow-hidden group">
-                  <Image
-                    src="/placeholder.svg?height=300&width=500"
-                    alt="Himalayan Retreat"
-                    width={500}
-                    height={300}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-green-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  />
-                  <motion.div
-                    className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ y: 20, opacity: 0 }}
-                    whileHover={{ y: 0, opacity: 1 }}
-                  >
-                    <p className="text-sm font-medium">
-                      Peaceful mountain retreat
-                    </p>
-                  </motion.div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-amber-900 mb-2">
-                    Himalayan Hill Station Retreat
-                  </h3>
-                  <div className="flex items-center text-gray-500 text-sm mb-4">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    <span>10 Days / 9 Nights</span>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    Rejuvenate your soul with a peaceful retreat to Shimla,
-                    Manali, and Dharamshala.
-                  </p>
-                  <div className="flex flex-col gap-2 mb-4">
-                    <div className="flex items-center text-gray-600">
-                      <Users className="h-4 w-4 mr-2" />
-                      <span>Group Size: 8-12 people</span>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <MapPin className="h-4 w-4 mr-2" />
-                      <span>Himachal Pradesh</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <motion.span
-                        className="text-amber-800 font-bold text-xl"
-                        whileHover={{
-                          scale: 1.05,
-                          textShadow: "0px 0px 5px rgba(217,119,6,0.3)",
-                        }}
-                      >
-                        ₹38,499
-                      </motion.span>
-                      <span className="text-gray-500 text-sm ml-2 line-through">
-                        ₹42,999
-                      </span>
-                    </div>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="relative overflow-hidden rounded-md"
-                    >
-                      <motion.span
-                        className="absolute inset-0 bg-amber-500 z-0"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.5 }}
-                      />
-                      <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">
-                        Book Now
-                      </Button>
-                    </motion.div>
-                  </div>
-                </CardContent>
-              </AnimatedCard>
+              {packages.map((pkg) => (
+                <PackagesCard key={pkg.id} {...pkg} />
+              ))}
             </div>
 
             <AnimatedSection delay={0.4}>
