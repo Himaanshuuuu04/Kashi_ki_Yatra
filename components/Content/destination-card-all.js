@@ -38,7 +38,7 @@ export const all = [
     description:
       "Discover the devotion and adventure wrapped in the sacred journey to Vaishno Devi, nestled in the majestic Trikuta Mountains. This revered pilgrimage combines the  spiritual fulfillment as you ascend to the holy cave shrine. ",
     highlight: "Trek to the holy cave",
-    delay: 0.2,
+    delay: 0.3,
     gradient: "from-amber-900/70",
   },
   {
@@ -52,7 +52,7 @@ export const all = [
     description:
       "Escape to the picturesque valleys of Kullu and Manali, where snow-capped mountains, pine forests, and the gushing Beas River create a dreamy Himalayan paradise. Whether you seek adventure sports, cozy cafes, or scenic getaways, this hill retreat offers the perfect blend of thrill and tranquility for every kind of traveler.",
     highlight: "Himalayan Paradise Escape",
-    delay: 0.3,
+    delay: 0.1,
     gradient: "from-sky-900/70",
   },
   {
@@ -66,7 +66,7 @@ export const all = [
     description:
       "Journey through the ‘Mini Switzerland’ of India to reach the highest Shiva temple in the world – Tungnath. Starting from the serene meadows of Chopta, this trek offers stunning Himalayan views, rhododendron forests, and a peaceful escape into nature’s lap. Perfect for nature lovers, trekkers, and spiritual seekers alike.",
     highlight: "Trek to Tungnath Temple",
-    delay: 0.4,
+    delay: 0.1,
     gradient: "from-emerald-900/70",
   },
   {
@@ -80,7 +80,7 @@ export const all = [
     description:
       "Immerse yourself in the timeless charm of Varanasi, where the sacred Ganga flows and spirituality fills every corner. Witness the mesmerizing Ganga Aarti at Dashashwamedh Ghat, explore ancient temples, and stroll through vibrant lanes echoing with chants and devotion. A journey to India’s spiritual and cultural heart.",
     highlight: "The Spiritual Capital of India",
-    delay: 0.5,
+    delay: 0.1,
     gradient: "from-yellow-900/70",
   },
   {
@@ -94,7 +94,7 @@ export const all = [
     description:
       "Step into the divine city of Ayodhya, the birthplace of Lord Ram and a center of epic mythology. Visit the grand Ram Mandir, serene ghats of the Sarayu River, and soak in the spiritual energy that flows through this legendary land of faith and devotion.",
     highlight: "Birthplace of Lord Ram",
-    delay: 0.6,
+    delay: 0.1,
     gradient: "from-orange-900/70",
   },
   {
@@ -108,7 +108,7 @@ export const all = [
     description:
       "Explore the serene landscapes of Chitrakoot, a sacred town where nature meets divinity. Known for its Ramayana connections, Chitrakoot offers peaceful ghats, holy caves, and ancient temples that create a deeply spiritual atmosphere for seekers and nature lovers alike.",
     highlight: "Land of Ramayana Legends",
-    delay: 0.7,
+    delay: 0.1,
     gradient: "from-red-900/70",
   },
   {
@@ -122,7 +122,7 @@ export const all = [
     description:
       "Celebrate devotion and festivity in Mathura and Vrindavan, the land of Lord Krishna’s birth and childhood leelas. From temple hopping to Holi celebrations, these twin towns are alive with culture, music, and divine energy, offering an experience filled with joy and spiritual connection.",
     highlight: "Journey through Krishna's Life",
-    delay: 0.8,
+    delay: 0.1,
     gradient: "from-purple-900/70",
   },
   {
@@ -136,7 +136,7 @@ export const all = [
     description:
       "Visit the ancient city of Ujjain, home to the Mahakaleshwar Jyotirlinga and one of the four Kumbh Mela destinations. A place where myth, time, and spirituality merge — offering pilgrims a powerful, timeless connection to divine energies on the banks of the holy Shipra River.",
     highlight: "Home of Mahakal Jyotirlinga",
-    delay: 0.9,
+    delay: 0.1,
     gradient: "from-indigo-900/70",
   },
 ];
