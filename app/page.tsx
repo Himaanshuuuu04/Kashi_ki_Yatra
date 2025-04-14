@@ -55,6 +55,7 @@ import Logo from "../public/logo.svg";
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("all");
+  const [readMore, setReadMore] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
@@ -159,9 +160,9 @@ export default function Home() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+        className=" fixed top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       >
-        <div className="container flex h-16 items-center bg-amber-50 justify-between px-4">
+        <div className="container flex h-16 items-center bg-black/90 justify-between px-4">
           <motion.div
             className="flex items-center gap-2"
             whileHover={{ scale: 1.1 }}
@@ -185,7 +186,7 @@ export default function Home() {
               }}
             >
               <Image
-                src="/logoimage.png"
+                src="/logo.png"
                 alt="Bharat Yatra logo"
                 width={40}
                 height={40}
@@ -208,7 +209,7 @@ export default function Home() {
               }}
             >
               <Image 
-                src="/logo.svg"
+                src="/logoimage1.png"
                 alt="Kashi ki yatra logo"
                 width={140}
                 height={50}
@@ -216,7 +217,7 @@ export default function Home() {
               />
             </motion.span>
           </motion.div>
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8 text-white">
             {[
               "Religious Tours",
               "Destinations",
@@ -286,9 +287,9 @@ export default function Home() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-b"
+            className="md:hidden bg-black/90 border-b"
           >
-            <div className="container py-4 flex flex-col space-y-3 px-4">
+            <div className="container py-4 flex flex-col space-y-3 px-4 text-white mt-5">
               {[
                 "Religious Tours",
                 "Destinations",
@@ -335,14 +336,14 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[90vh]" ref={heroRef}>
+        <section className="relative h-[100vh]" ref={heroRef}>
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-amber-900/90 to-amber-800/50 z-10 backdrop-blur-xs "
+            className="absolute inset-0 bg-gradient-to-r from-amber-900/90 to-amber-800/40 z-10 backdrop-blur-xs "
             style={{ opacity: heroOpacity }}
           />
           <div className="absolute inset-0">
             <Image
-              src="/placeholder1-min.jpg"
+              src="/bg.jpeg"
               alt="Ancient Indian Temple"
               width={1600}
               height={600}
@@ -368,13 +369,7 @@ export default function Home() {
                 }}
               >
                 Discover the Soul of India
-              </motion.div>
-              <TextReveal
-                text="Explore  your  Dream  Yatra  with"
-                className="text-3xl font-bold sm:text-4xl md:text-5xl/tight text-white mb-6"
-                delay={0.5}
-              />
-              <motion.div
+              </motion.div><motion.div
                 className="flex justify-center mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -388,6 +383,12 @@ export default function Home() {
                   className="rounded-full mb-6"
                 />
               </motion.div>
+              <TextReveal
+                text="Explore  your  Dream  Yatra  with Us"
+                className="text-3xl font-bold sm:text-4xl md:text-5xl/tight text-white mb-6"
+                delay={0.5}
+              />
+              
               {/* <motion.span
                 className="text-5xl font-bold  sm:text-4xl md:text-[5rem]/tight text-amber-300 block mb-6"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -649,9 +650,9 @@ export default function Home() {
                     >
                       <TabsContent value="all" className="mt-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {all.map((place) => (
+                            {all.slice(0, readMore ? all.length : 3).map((place) => (
                             <DestinationCard key={place.id} {...place} />
-                          ))}
+                            ))}
                         </div>
                       </TabsContent>
 
@@ -688,7 +689,7 @@ export default function Home() {
                       whileHover={{ x: "100%" }}
                       transition={{ duration: 0.5 }}
                     />
-                    <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">
+                    <Button className={`bg-amber-600 hover:bg-amber-700 relative z-10 ${readMore ? 'hidden' : 'visible'}`} onClick={() => setReadMore(!readMore)}>
                       View All Destinations
                     </Button>
                   </motion.div>
@@ -703,7 +704,7 @@ export default function Home() {
 
 
         {/* Popular Packages */}
-        <section id="packages" className="py-12 md:py-24  relative">
+        {/* <section id="packages" className="py-12 md:py-24  relative">
           <div className="container px-4 md:px-6">
             <AnimatedSection>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -758,7 +759,7 @@ export default function Home() {
               </div>
             </AnimatedSection>
           </div>
-        </section>
+        </section> */}
 
 
 
@@ -1190,7 +1191,7 @@ export default function Home() {
                     }}
                   >
                     <Image
-                      src="/logoimage.png"
+                      src="/logo.png"
                       alt="Bharat Yatra logo"
                       width={40}
                       height={40}
