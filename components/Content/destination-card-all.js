@@ -6,7 +6,7 @@ export const all = [
     tag: "Tirth Sthal",
     rating: 4.5,
     price: "₹16,499 onwards",
-    image: "/vanarsi-chardham.jfif",
+    image: "/vanarsi-chardham.webp",
     description:
       "Experience the divine essence of India's spiritual heartland with Varanasi, Ayodhya, Chitrakoot & Prayagraj in one sacred journey.",
     highlight: "Spiritual Heartland Journey",
