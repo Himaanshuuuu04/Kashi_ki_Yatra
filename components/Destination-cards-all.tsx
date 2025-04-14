@@ -59,12 +59,12 @@
           <span>{location}</span>
         </div>
         <p className="text-gray-600 mb-4">{description}</p>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center" >
           <motion.span
             className="text-amber-800 font-bold"
             whileHover={{ scale: 1.05, textShadow: "0px 0px 5px rgba(217,119,6,0.3)" }}
           >
-            {price}
+            Check Price
           </motion.span>
           <motion.div
             whileHover={{ x: 5 }}

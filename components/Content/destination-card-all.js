@@ -15,7 +15,7 @@ export const all = [
   },
   {
     id: 2,
-    title: "4 Dham yatra",
+    title: "4 Dham Yatra - Yamunotri, Gangotri, Kedarnath & Badrinath",
     location: "Uttarakhand",
     tag: "Hill & Religious",
     rating: 4.8,
@@ -29,14 +29,14 @@ export const all = [
   },
   {
     id: 3,
-    title: "Kullu - Manali",
+    title: "Kullu - Manali - Shimla - Kasol - Sissu",
     location: "Himachal Pradesh",
     tag: "Hill Station",
     rating: 4.7,
     price: "₹14,999 onwards",
     image: "/kullu-manali.jpg",
     description:
-      "Escape to the picturesque valleys of Kullu and Manali, where snow-capped mountains, pine forests, and the gushing Beas River create a dreamy Himalayan paradise. Whether you seek adventure sports, cozy cafes, or scenic getaways, this hill retreat offers the perfect blend of thrill and tranquility for every kind of traveler.",
+      "Escape to the picturesque valleys of Kullu and Manali, where snow-capped mountains, pine forests, and the gushing Beas River create a dreamy Himalayan paradise. Whether you seek adventure sports, cozy cafes, or scenic getaways.",
     highlight: "Himalayan Paradise Escape",
     delay: 0.3,
     gradient: "from-sky-900/70",

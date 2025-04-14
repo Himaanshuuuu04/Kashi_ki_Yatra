@@ -47,11 +47,6 @@ import { TestimonialCard } from "@/components/testimonials-card";
 import { testimonials } from "@/components/Content/testimonials";
 import Logo from "../public/logo.svg";
 
-
-
-
-
-
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("all");
@@ -208,7 +203,7 @@ export default function Home() {
                 repeatType: "loop",
               }}
             >
-              <Image 
+              <Image
                 src="/logoimage1.png"
                 alt="Kashi ki yatra logo"
                 width={140}
@@ -369,7 +364,8 @@ export default function Home() {
                 }}
               >
                 Discover the Soul of India
-              </motion.div><motion.div
+              </motion.div>
+              <motion.div
                 className="flex justify-center mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -388,7 +384,7 @@ export default function Home() {
                 className="text-3xl font-bold sm:text-4xl md:text-5xl/tight text-white mb-6"
                 delay={0.5}
               />
-              
+
               {/* <motion.span
                 className="text-5xl font-bold  sm:text-4xl md:text-[5rem]/tight text-amber-300 block mb-6"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -650,8 +646,10 @@ export default function Home() {
                     >
                       <TabsContent value="all" className="mt-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {all.slice(0, readMore ? all.length : 3).map((place) => (
-                            <DestinationCard key={place.id} {...place} />
+                          {all
+                            .slice(0, readMore ? all.length : 3)
+                            .map((place) => (
+                              <DestinationCard key={place.id} {...place} />
                             ))}
                         </div>
                       </TabsContent>
@@ -689,7 +687,12 @@ export default function Home() {
                       whileHover={{ x: "100%" }}
                       transition={{ duration: 0.5 }}
                     />
-                    <Button className={`bg-amber-600 hover:bg-amber-700 relative z-10 ${readMore ? 'hidden' : 'visible'}`} onClick={() => setReadMore(!readMore)}>
+                    <Button
+                      className={`bg-amber-600 hover:bg-amber-700 relative z-10 ${
+                        readMore ? "hidden" : "visible"
+                      }`}
+                      onClick={() => setReadMore(!readMore)}
+                    >
                       View All Destinations
                     </Button>
                   </motion.div>
@@ -698,10 +701,6 @@ export default function Home() {
             </div>
           </motion.div>
         </section>
-
-
-
-
 
         {/* Popular Packages */}
         {/* <section id="packages" className="py-12 md:py-24  relative">
@@ -761,10 +760,6 @@ export default function Home() {
           </div>
         </section> */}
 
-
-
-
-
         {/* Testimonials */}
         <section className="py-12 md:py-14 bg-amber-500/10 relative">
           <div className="container px-4 md:px-6">
@@ -800,10 +795,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-
-
-
 
         {/* Call to Action */}
         <section className="py-12 md:py-24 bg-amber-800 text-white relative overflow-hidden">
@@ -853,10 +844,7 @@ export default function Home() {
                     whileTap={{ scale: 0.95 }}
                     className="relative"
                   >
-                    <Button
-                      
-                      className=" text-black bg-amber-500  hover:bg-amber-600 relative"
-                    >
+                    <Button className=" text-black bg-amber-500  hover:bg-amber-600 relative">
                       <motion.span
                         className="absolute inset-0 bg-amber-700 rounded-md z-0"
                         initial={{ scale: 0, opacity: 0 }}
@@ -917,10 +905,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-
-
-
 
         {/* Contact Form */}
         <section id="contact" className="py-12 md:py-24 bg-white">
@@ -1019,10 +1003,12 @@ export default function Home() {
                     <div>
                       <p className="text-sm text-gray-500">Visit Us</p>
                       <p className="font-medium">
-                      B 47/1 KABIR NAGAR , DURGAKUND , VARANASI (NEAR BY PANACEA HOSPITAL )
+                        B-47/1 Kabir Nagar, Durgakund, Varanasi (Near By Panacea
+                        Hospital )
                       </p>
-                      <p>
-                      antriksh golf city  sector 105 Noida uttar Pradesh 201013
+                      <p className="font-medium">
+                        Antriksh Golf City, Sector 105, Noida, Uttar Pradesh,
+                        201013
                       </p>
                     </div>
                   </motion.div>
@@ -1157,8 +1143,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-
 
       {/* Footer */}
       <motion.footer
