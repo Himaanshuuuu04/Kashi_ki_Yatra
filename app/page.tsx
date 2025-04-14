@@ -1019,7 +1019,10 @@ export default function Home() {
                     <div>
                       <p className="text-sm text-gray-500">Visit Us</p>
                       <p className="font-medium">
-                        123 Heritage Lane, New Delhi, India
+                      B 47/1 KABIR NAGAR , DURGAKUND , VARANASI (NEAR BY PANACEA HOSPITAL )
+                      </p>
+                      <p>
+                      antriksh golf city  sector 105 Noida uttar Pradesh 201013
                       </p>
                     </div>
                   </motion.div>
@@ -1331,11 +1334,11 @@ export default function Home() {
               </h3>
               <ul className="space-y-2">
                 {[
-                  "Varanasi",
-                  "Rishikesh",
-                  "Tirupati",
-                  "Shimla",
-                  "Darjeeling",
+                  "Varanasi – Ayodhya – Prayagraj - Chitrkoot",
+                  "4 Dham yatra",
+                  "Kullu - Manali",
+                  "Vaishno Devi",
+                  "Chopta - Tungnath",
                 ].map((destination, index) => (
                   <motion.li
                     key={destination}
@@ -1399,7 +1402,7 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             <p className="text-amber-300 text-sm">
-              &copy; {new Date().getFullYear()} भारत यात्रा. All rights
+              &copy; {new Date().getFullYear()} Kashi Ki Yatra. All rights
               reserved.
             </p>
             <div className="flex gap-4 mt-4 md:mt-0">

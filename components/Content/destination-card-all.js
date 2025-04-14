@@ -29,20 +29,6 @@ export const all = [
   },
   {
     id: 3,
-    title: "Vaishno Devi",
-    location: "Jammu & Kashmir",
-    tag: "Hill & Religious",
-    rating: 4.8,
-    price: "₹17,999 onwards",
-    image: "/vaishnodevi.jpg",
-    description:
-      "Discover the devotion and adventure wrapped in the sacred journey to Vaishno Devi, nestled in the majestic Trikuta Mountains. This revered pilgrimage combines the  spiritual fulfillment as you ascend to the holy cave shrine. ",
-    highlight: "Trek to the holy cave",
-    delay: 0.3,
-    gradient: "from-amber-900/70",
-  },
-  {
-    id: 4,
     title: "Kullu - Manali",
     location: "Himachal Pradesh",
     tag: "Hill Station",
@@ -52,8 +38,22 @@ export const all = [
     description:
       "Escape to the picturesque valleys of Kullu and Manali, where snow-capped mountains, pine forests, and the gushing Beas River create a dreamy Himalayan paradise. Whether you seek adventure sports, cozy cafes, or scenic getaways, this hill retreat offers the perfect blend of thrill and tranquility for every kind of traveler.",
     highlight: "Himalayan Paradise Escape",
-    delay: 0.1,
+    delay: 0.3,
     gradient: "from-sky-900/70",
+  },
+  {
+    id: 4,
+    title: "Vaishno Devi",
+    location: "Jammu & Kashmir",
+    tag: "Hill & Religious",
+    rating: 4.8,
+    price: "₹17,999 onwards",
+    image: "/vaishnodevi.jpg",
+    description:
+      "Discover the devotion and adventure wrapped in the sacred journey to Vaishno Devi, nestled in the majestic Trikuta Mountains. This revered pilgrimage combines the  spiritual fulfillment as you ascend to the holy cave shrine. ",
+    highlight: "Trek to the holy cave",
+    delay: 0.1,
+    gradient: "from-amber-900/70",
   },
   {
     id: 5,
