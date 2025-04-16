@@ -1,7 +1,9 @@
+import { i } from "framer-motion/client";
+
 export const packages = [
   {
     id: "hindu-spirituality",
-    title: "Awaken Your Soul",
+    title: "Vanarsi, Ayodhya & Prayagraj",
     subtitle: "Experience the Heart of Hindu Spirituality",
     description:
       "Discover the soul of India with us! Your trusted companion for spiritual journeys across the divine cities of Varanasi, Ayodhya, Prayagraj (Mahakumbh), Vrindavan, and Sarnath. Immerse in the sacred essence of Hinduism, ancient rituals, and timeless traditions. Let's travel beyond destinations, into the heart of divinity. ✨",
@@ -24,6 +26,8 @@ export const packages = [
           "Drop at Hotel for Night Stay.",
         ],
         note: "Tourist Guide and Extra personal charges excluded",
+        image: "/placeholder.svg?height=400&width=600",
+        
       },
       {
         day: 2,
@@ -35,6 +39,7 @@ export const packages = [
           "Visit at Bharat milap temple",
         ],
         note: "This is not a guided tour; the driver will not be the guide for the tour. A well-experienced professional driver knows all the places to take the tour. This is a local city tour; hence, the vehicle cannot be used for any outstation tour.",
+        image: "/placeholder.svg?height=400&width=600",
       },
       {
         day: 3,
@@ -49,6 +54,7 @@ export const packages = [
           "Drop at By road",
         ],
         note: "Extra and personal charges excluded",
+        image: "/placeholder.svg?height=400&width=600",
       },
       {
         day: 4,
@@ -62,6 +68,7 @@ export const packages = [
           "Then move for Airport/station to Drop you. (extra cab charges apply based on distance.)",
         ],
         note: "Extra and personal charges excluded",
+        image: "/placeholder.svg?height=400&width=600",
       },
     ],
     pricing: [
