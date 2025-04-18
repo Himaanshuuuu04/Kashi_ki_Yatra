@@ -650,7 +650,9 @@ export default function Home() {
                           {all
                             .slice(0, readMore ? all.length : 3)
                             .map((place) => (
-                              <DestinationCard key={place.id} {...place} />
+                              <Link href={`/packages/${place.id}`} key={place.id}>
+                              <DestinationCard key={place.id} {...place} /> 
+                              </Link>
                             ))}
                         </div>
                       </TabsContent>
