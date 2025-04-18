@@ -37,15 +37,16 @@ import { AnimatedIcon } from "@/components/animated-icon";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { all } from "@/components/Content/destination-card-all.js";
+import { all } from "@/components/Content/home/destination-card-all.js";
 import { DestinationCard } from "@/components/Destination-cards-all";
-import { hillstations } from "@/components/Content/destination-card-hills.js";
-import { religious } from "@/components/Content/destination-card-religious.js";
-import { packages } from "@/components/Content/packages.js";
-import { PackagesCard } from "@/components/Packages-card";
+import { hillstations } from "@/components/Content/home/destination-card-hills.js";
+import { religious } from "@/components/Content/home/destination-card-religious.js";
 import { TestimonialCard } from "@/components/testimonials-card";
-import { testimonials } from "@/components/Content/testimonials";
+import { testimonials } from "@/components/Content/home/testimonials";
+import {images} from "@/components/Content/home/carousel-images";
+
 import Logo from "../public/logo.svg";
+import { AnimatedCarousel } from "@/components/animated-carousel";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -234,7 +235,7 @@ export default function Home() {
                 }}
               >
                 <Link
-                  href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
+                  href={`${item.toLowerCase().replace(/\s+/g, "")}`}
                   className="text-md font-medium transition-all "
                 >
                   {item}
@@ -245,7 +246,7 @@ export default function Home() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden bg-amber-400"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <Menu className="h-6 w-6" />
@@ -259,9 +260,9 @@ export default function Home() {
               scale: 1.05,
               boxShadow: "0px 0px 15px rgba(217,119,6,0.5)",
             }}
-            className="hidden md:block"
+            className="hidden md:block mr-4 "
           >
-            <Button className="bg-amber-600 hover:bg-amber-700 relative overflow-hidden group">
+            <Button className="bg-amber-600 hover:bg-amber-700 relative overflow-hidden group ">
               <motion.span
                 className="absolute inset-0 bg-amber-500 z-0"
                 initial={{ x: "-100%" }}
@@ -863,6 +864,7 @@ export default function Home() {
                   whileHover={{ scale: 1.02, rotate: 1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
+                  {/* <AnimatedCarousel  /> */}
                   <Image
                     src="/Temple_at_Sunset.jpg"
                     alt="Temple at Sunset"
@@ -870,6 +872,7 @@ export default function Home() {
                     height={400}
                     className="rounded-lg shadow-lg"
                   />
+
                   <motion.div
                     className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg"
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}

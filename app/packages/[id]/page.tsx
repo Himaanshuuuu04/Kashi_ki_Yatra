@@ -161,7 +161,7 @@ export default function PackageDetail() {
         transition={{ duration: 0.5, delay: 0.3 }}
         className=" fixed top-0 z-50 w-screen bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       >
-        <div className="container flex h-16 items-center bg-black/90 justify-between px-4">
+        <div className="container flex h-16 items-center bg-black/90 justify-between px-4 ">
           <motion.div
             className="flex items-center gap-2"
             whileHover={{ scale: 1.1 }}
@@ -238,7 +238,7 @@ export default function PackageDetail() {
                 }}
               >
                 <Link
-                  href={`#${item.toLowerCase().replace(/\s+/g, "")}`}
+                  href={`/${item.toLowerCase().replace(/\s+/g, "")}`}
                   className="text-md font-medium transition-all "
                 >
                   {item}
@@ -332,14 +332,20 @@ export default function PackageDetail() {
           </motion.div>
         )}
       </AnimatePresence>
-      <main className="flex-1 relative">
+
+
+
+
+
+
+      <main className="flex-1 relative mt-10">
         {/* Hero Section */}
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-900/70 to-amber-800/50 z-10" />
           <Image
             src={
               packageData.images?.[0] ||
-              "/placeholder.svg?height=600&width=1600"
+              ""
             }
             alt={packageData.title}
             width={1600}
@@ -399,8 +405,12 @@ export default function PackageDetail() {
           </div>
         </section>
 
+
+
+
+
         {/* Contact Info */}
-        <section className="py-6 bg-amber-50/50">
+        <section className="py-6 bg-amber-500/50">
           <div className="container px-4 md:px-6">
             <div className="flex flex-wrap justify-center gap-6 md:gap-10">
               {packageData.contact && (
@@ -493,7 +503,7 @@ export default function PackageDetail() {
         </section>
 
         {/* Main Content with Sidebar */}
-        <section className="py-12 md:py-16 bg-white">
+        <section className="py-12 md:py-16 bg-amber-100/80">
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Main Content - Scrollable */}
