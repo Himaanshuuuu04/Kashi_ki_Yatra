@@ -1,15 +1,11 @@
-"use client"
-
-import { motion, useScroll } from "framer-motion"
+"use client";
 
 export function ScrollProgress() {
-  const { scrollYProgress } = useScroll()
-
+  // Remove framer-motion and use a static div
   return (
-    <motion.div
+    <div
       className="fixed top-0 left-0 right-0 h-1 bg-amber-600 origin-left z-50 transition-transform duration-300 ease-in-out"
-      style={{ scaleX: scrollYProgress }}
+      style={{ width: "100%", transform: "scaleX(1)" }}
     />
-  )
+  );
 }
-

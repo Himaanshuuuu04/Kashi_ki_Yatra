@@ -1,6 +1,5 @@
 import { Calendar, MapPin, Users } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
 import { AnimatedCard } from "@/components/animated-card";
@@ -39,7 +38,7 @@ export const PackagesCard = ({
   originalPrice,
 }: PackagesCardProps) => {
   return (
-    <AnimatedCard delay={delay}>
+    <AnimatedCard>
       {/* Image & Overlay */}
       <div className="relative overflow-hidden group">
         <Image
@@ -50,31 +49,20 @@ export const PackagesCard = ({
           className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
         />
 
-        <motion.div
+        <div
           className={`absolute inset-0 bg-gradient-to-t ${gradient} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
         />
 
         {tag && (
-          <motion.div
-            className="absolute top-3 right-3 bg-red-600 text-white px-2 py-1 rounded text-xs"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, delay: 0.5 }}
-          >
+          <div className="absolute top-3 right-3 bg-red-600 text-white px-2 py-1 rounded text-xs">
             {tag}
-          </motion.div>
+          </div>
         )}
 
         {highlight && (
-          <motion.div
-            className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-          >
+          <div className="absolute bottom-3 left-3 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <p className="text-sm font-medium">{highlight}</p>
-          </motion.div>
+          </div>
         )}
       </div>
 
@@ -103,15 +91,7 @@ export const PackagesCard = ({
 
         <div className="flex justify-between items-center">
           <div>
-            <motion.span
-              className="text-amber-800 font-bold text-xl"
-              whileHover={{
-                scale: 1.05,
-                textShadow: "0px 0px 5px rgba(217,119,6,0.3)",
-              }}
-            >
-              {price}
-            </motion.span>
+            <span className="text-amber-800 font-bold text-xl">{price}</span>
             {originalPrice && (
               <span className="text-gray-500 text-sm ml-2 line-through">
                 {originalPrice}
@@ -119,21 +99,12 @@ export const PackagesCard = ({
             )}
           </div>
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative overflow-hidden rounded-md"
-          >
-            <motion.span
-              className="absolute inset-0 bg-amber-500 z-0"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: "100%" }}
-              transition={{ duration: 0.5 }}
-            />
+          <div className="relative overflow-hidden rounded-md">
+            <span className="absolute inset-0 bg-amber-500 z-0" />
             <Button className="bg-amber-600 hover:bg-amber-700 relative z-10">
               Book Now
             </Button>
-          </motion.div>
+          </div>
         </div>
       </CardContent>
     </AnimatedCard>
